@@ -1,3 +1,5 @@
+const { MessageEmbed } = require("discord.js");
+
 module.exports = {
   name: "cd",
   category: "main",
@@ -5,9 +7,7 @@ module.exports = {
   devOnly: false,
   run: async ({ client, message, args }) => {
     const puppeteer = require("puppeteer");
-
     let title = args.join(" ");
-    console.log(title);
 
     (async () => {
       const browser = await puppeteer.launch();
@@ -34,7 +34,13 @@ module.exports = {
         return cd;
       });
 
-      await message.reply(grabTxt.join(" "));
+      const embed = new MessageEmbed()
+        .setColor("#0099ff")
+        .setTitle("Title")
+        .setDescription(grabTxt.join(" "))
+        .setTimestamp();
+
+      await message.reply({ embeds: [embed] });
       await browser.close();
     })();
   },
