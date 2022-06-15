@@ -1,6 +1,5 @@
 const { getFiles } = require("../util/functions");
 const fs = require("fs");
-const { category } = require("../commands/info/ping");
 
 module.exports = (bot, reload) => {
   const { client } = bot;
