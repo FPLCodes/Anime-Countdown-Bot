@@ -35,6 +35,8 @@ module.exports = {
             const image = document.querySelector(".anime-poster img.lazyload");
             const title = document.querySelector(".anime-poster img.lazyload");
             const ep = document.querySelector(".countdown-bar .info-bar-label");
+            const rating = document.querySelector(".rating-box--rating");
+            const prem = document.querySelectorAll(".section-body");
 
             let data = [];
             cd.forEach((tag) => {
@@ -43,6 +45,8 @@ module.exports = {
             data.push(image.getAttribute("src"));
             data.push(title.getAttribute("alt"));
             data.push(ep.innerText);
+            data.push(rating.innerText);
+            data.push(prem[1].innerText);
 
             return data;
           });
@@ -51,7 +55,7 @@ module.exports = {
           await browser.close();
 
           const embed = new MessageEmbed()
-            .setColor("#0099ff")
+            .setColor("#ffc0cb")
             .setTitle(
               `${data[6]}: ${data[0]} days, ${data[1]} hours, ${data[2]} minutes, ${data[3]} seconds`
             )
@@ -60,13 +64,18 @@ module.exports = {
               iconURL: data[4],
               url: "https://discord.js.org",
             })
+            .addFields(
+              { name: "\u200B", value: "\u200B" },
+              { name: "🎬 Premiere", value: data[8], inline: true },
+              { name: "⭐ Rating", value: data[7], inline: true }
+            )
             .setImage(data[4])
             .setTimestamp();
 
           msg.delete();
           message.reply({ embeds: [embed] });
         } catch (err) {
-          msg.edit("Anime has already ended or an error has occured");
+          msg.edit("Anime has already finished airing");
         }
       })();
     });
