@@ -57,11 +57,11 @@ module.exports = {
           const embed = new MessageEmbed()
             .setColor("#ffc0cb")
             .setTitle(
-              `${data[6]}: ${data[0]} ${data[0] === "1" ? "day" : "days"}, ${
+              `${data[6]}: \`${data[0]} ${data[0] === "1" ? "day" : "days"}, ${
                 data[1]
               } ${data[1] === "1" ? "hour" : "hours"}, ${data[2]} ${
                 data[2] === "1" ? "minute" : "minutes"
-              }, ${data[3]} ${data[3] === "1" ? "second" : "seconds"}`
+              }, ${data[3]} ${data[3] === "1" ? "second" : "seconds"}\``
             )
             .setAuthor({
               name: data[5],
