@@ -7,7 +7,7 @@ const client = new Discord.Client({
 
 let bot = {
   client,
-  prefix: "anime",
+  prefix: "ani",
   owners: ["274509924371922946"],
 };
 
