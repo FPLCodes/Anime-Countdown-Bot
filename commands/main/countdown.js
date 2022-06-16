@@ -57,20 +57,26 @@ module.exports = {
           const embed = new MessageEmbed()
             .setColor("#ffc0cb")
             .setTitle(
-              `${data[6]}: ${data[0]} days, ${data[1]} hours, ${data[2]} minutes, ${data[3]} seconds`
+              `${data[6]}: ${data[0]} ${data[0] === "1" ? "day" : "days"}, ${
+                data[1]
+              } ${data[1] === "1" ? "hour" : "hours"}, ${data[2]} ${
+                data[2] === "1" ? "minute" : "minutes"
+              }, ${data[3]} ${data[3] === "1" ? "second" : "seconds"}`
             )
             .setAuthor({
               name: data[5],
               iconURL: data[4],
-              url: "https://discord.js.org",
+              url: page.url(),
             })
             .addFields(
-              { name: "\u200B", value: "\u200B" },
               { name: "🎬 Premiere", value: data[8], inline: true },
               { name: "⭐ Rating", value: data[7], inline: true }
             )
             .setImage(data[4])
-            .setTimestamp();
+            .setTimestamp()
+            .setFooter({
+              text: "Click on the title for further details",
+            });
 
           msg.delete();
           message.reply({ embeds: [embed] });
