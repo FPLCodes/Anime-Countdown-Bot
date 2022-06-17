@@ -23,7 +23,7 @@ module.exports = {
             page.waitForNavigation(),
           ]);
         } catch (err) {
-          msg.edit("Sorry onii-chan I couldn't find that");
+          msg.edit("Sorry onii-chan I couldn't find that :(");
           return;
         }
 
